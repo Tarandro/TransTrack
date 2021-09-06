@@ -54,7 +54,6 @@ if __name__ == '__main__':
 
 
             if split != 'test':
-                print(ann_path)
                 anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',', usecols=range(9)).reshape(-1,9)
                 for i in range(anns.shape[0]):
                     ann_cnt += 1
