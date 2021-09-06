@@ -57,7 +57,6 @@ if __name__ == '__main__':
                 print(ann_path)
                 anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',', usecols=range(9)).reshape(-1,9)
                 for i in range(anns.shape[0]):
-                    print(anns[i])
                     ann_cnt += 1
                     ann = {'id': ann_cnt,
                          'category_id': 1,
