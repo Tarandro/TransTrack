@@ -48,9 +48,9 @@ if __name__ == '__main__':
             out['images'].append(image_info)
 
             if split == "val":
-                ann_path = os.path.join(seq_path.replace('val', 'labels_with_ids'), seq.replace("jpg","txt"))
+                ann_path = seq_path.replace('val', 'labels_with_ids').replace("jpg","txt")
             else:
-                ann_path = os.path.join(seq_path.replace('train', 'labels_with_ids'), seq.replace("jpg","txt"))
+                ann_path = seq_path.replace('train', 'labels_with_ids').replace("jpg","txt")
 
 
             if split != 'test':
