@@ -56,7 +56,7 @@ if __name__ == '__main__':
             for i in range(num_images):
                 if i < image_range[0] or i > image_range[1]:
                     continue
-                img = cv2.imread(os.path.join(data_path, '{}/{}_{:04d}.jpg'.format(seq,seq, i + 1)))
+                img = cv2.imread(os.path.join(data_path, '{}/{}_frame{:04d}.jpg'.format(seq,seq, i + 1)))
                 height, width = img.shape[:2]
                 image_info = {'file_name': '{}/{}_{:04d}.jpg'.format(seq,seq, i + 1),  # image name.
                               'id': image_cnt + i + 1,  # image number in the entire training set.
@@ -76,7 +76,11 @@ if __name__ == '__main__':
                                          if int(anns[i][0]) - 1 >= image_range[0] and
                                          int(anns[i][0]) - 1 <= image_range[1]], np.float32) 
                     anns_out[:, 0] -= image_range[0]
-                    gt_out = os.path.join(seq_path.replace('test', 'labels_with_ids'), 'gt/gt_{}.txt'.format(split))
+                    if split == "test":
+                        gt_out = os.path.join(seq_path.replace('test', 'labels_with_ids'), 'gt/gt_{}.txt'.format(split))
+                    else:
+                        gt_out = os.path.join(seq_path.replace('train', 'labels_with_ids'),
+                                              'gt/gt_{}.txt'.format(split))
                     fout = open(gt_out, 'w')
                     for o in anns_out:
                         fout.write('{:d},{:d},{:d},{:d},{:d},{:d},{:d},{:d},{:.6f}\n'.format(
