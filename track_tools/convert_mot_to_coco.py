@@ -69,7 +69,7 @@ if __name__ == '__main__':
             print('{}: {} images'.format(seq, num_images))
             if split != 'test':
                 #det_path = os.path.join(seq_path, 'det/det.txt')
-                anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',', usecols=range(9))
+                anns = np.loadtxt(ann_path, dtype=np.float32, delimiter=',', usecols=range(9)).reshape(-1,9)
                 #dets = np.loadtxt(det_path, dtype=np.float32, delimiter=',')
                 if CREATE_SPLITTED_ANN and ('half' in split):
                     anns_out = np.array([anns[i] for i in range(anns.shape[0])
