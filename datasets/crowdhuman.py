@@ -155,8 +155,8 @@ def build(image_set, args):
     assert root.exists(), f'provided Crowdhuman path {root} does not exist'
     mode = 'instances'
     PATHS = {
-        "train": (root / "CrowdHuman_train", root / "annotations" / 'train.json'),
-        "val": (root / "CrowdHuman_val", root / "annotations" / 'val.json'),
+        "train": (root / "train", root / "annotations" / 'train.json'),
+        "val": (root / "val", root / "annotations" / 'val.json'),
     }
 
     img_folder, ann_file = PATHS[image_set]
