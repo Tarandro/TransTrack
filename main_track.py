@@ -282,13 +282,13 @@ def main(args):
             lr_scheduler.step(lr_scheduler.last_epoch)
             args.start_epoch = checkpoint['epoch'] + 1
         # check the resumed model
-        try:
-            if not args.eval:
-                test_stats, coco_evaluator, _ = evaluate(
-                    model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir
-                )
-        except:
-            pass
+        #try:
+        #    if not args.eval:
+        #        test_stats, coco_evaluator, _ = evaluate(
+        #            model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir
+        #        )
+        #except:
+        #    pass
     
     if args.eval:
         assert args.batch_size == 1, print("Now only support 1.")
