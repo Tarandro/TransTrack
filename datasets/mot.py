@@ -33,6 +33,10 @@ class CocoDetection(TvCocoDetection):
 
         path = coco.loadImgs(img_id)[0]['file_name']
 
+        if ' ' in path:
+            t = "_".join(path.split('/')[-1].split('_')[:3])
+            path = path.replace(" ", t)
+
         img = self.get_image(path)
         if self.transforms is not None:
             img, target = self.transforms(img, target)

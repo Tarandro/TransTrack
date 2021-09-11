@@ -18,13 +18,11 @@ def txt2img(visual_path="visual_val_gt"):
 
     gt_json_path = 'mot/annotations/val_half.json'
     img_path = 'mot/train/'
-    show_video_names = ['MOT17-02-FRCNN', 
-                    'MOT17-04-FRCNN',
-                    'MOT17-05-FRCNN',
-                    'MOT17-09-FRCNN',
-                    'MOT17-10-FRCNN',        
-                    'MOT17-11-FRCNN',
-                    'MOT17-13-FRCNN']
+    show_video_names = ['57583_000082_Sideline',
+                    '57596_002686_Sideline',
+                    '57992_000301_Sideline',
+                    '58102_002798_Sideline',
+                    '57907_003615_Sideline']
 
 
     test_json_path = 'mot/annotations/test.json'
