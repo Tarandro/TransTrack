@@ -282,13 +282,13 @@ def main(args):
             lr_scheduler.step(lr_scheduler.last_epoch)
             args.start_epoch = checkpoint['epoch'] + 1
         # check the resumed model
-        try:
-            if not args.eval:
-                test_stats, coco_evaluator, _ = evaluate(
-                    model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir
-                )
-        except:
-            pass
+        #try:
+        #    if not args.eval:
+        #        test_stats, coco_evaluator, _ = evaluate(
+        #            model, criterion, postprocessors, data_loader_val, base_ds, device, args.output_dir
+        #        )
+        #except:
+        #    pass
     
     if args.eval:
         assert args.batch_size == 1, print("Now only support 1.")
@@ -325,7 +325,7 @@ def main(args):
         if args.output_dir:
             checkpoint_paths = [output_dir / 'checkpoint.pth']
             # extra checkpoint before LR drop and every 5 epochs
-            if (epoch + 1) % args.lr_drop == 0 or (epoch + 1) % 1 == 0:
+            if (epoch + 1) % args.lr_drop == 0 or (epoch + 1) % 20 == 0:
                 checkpoint_paths.append(output_dir / f'checkpoint{epoch:04}.pth')
             for checkpoint_path in checkpoint_paths:
                 utils.save_on_master({
