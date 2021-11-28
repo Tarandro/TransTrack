@@ -16,6 +16,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
+from util.tool import load_model
 from torch.utils.data import DataLoader
 import datasets
 import util.misc as utils
@@ -53,6 +54,8 @@ def get_args_parser():
     # Model parameters
     parser.add_argument('--frozen_weights', type=str, default=None,
                         help="Path to the pretrained model. If set, only the mask head will be trained")
+
+    parser.add_argument('--pretrained', default=None, help='resume from checkpoint')
 
     # * Backbone
     parser.add_argument('--backbone', default='resnet50', type=str,
@@ -250,6 +253,9 @@ def main(args):
     if args.frozen_weights is not None:
         checkpoint = torch.load(args.frozen_weights, map_location='cpu')
         model_without_ddp.detr.load_state_dict(checkpoint['model'])
+
+    if args.pretrained is not None:
+        model_without_ddp = load_model(model_without_ddp, args.pretrained)
 
     output_dir = Path(args.output_dir)
     if args.resume:
