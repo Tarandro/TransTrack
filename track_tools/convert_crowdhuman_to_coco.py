@@ -58,7 +58,7 @@ if __name__ == '__main__':
                 for i in range(anns.shape[0]):
                     ann_cnt += 1
                     ann = {'id': ann_cnt,
-                         'category_id': 1,
+                         'category_id': anns[i][1],   # else 1 if only one category
                          'image_id': image_cnt,
                          'bbox_vis': anns[i][2:6].tolist(),
                          'bbox': anns[i][2:6].tolist(),

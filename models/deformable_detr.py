@@ -439,6 +439,8 @@ def build(args):
     num_classes = 1 if args.dataset_file != 'coco' else 91
     if args.dataset_file == "coco_panoptic":
         num_classes = 250
+    if args.dataset_file == "crowdhuman":
+        num_classes = 14                 # else 1 if only one category
     device = torch.device(args.device)
 
     backbone = build_backbone(args)

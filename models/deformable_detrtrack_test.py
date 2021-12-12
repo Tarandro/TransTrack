@@ -512,7 +512,7 @@ def build(args):
     elif args.dataset_file == "coco_panoptic":
         num_classes = 250
     else:
-        num_classes = 2
+        num_classes = 15  # else 2 if only one category
     device = torch.device(args.device)
 
     backbone = build_backbone(args)
