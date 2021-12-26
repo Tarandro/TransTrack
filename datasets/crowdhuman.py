@@ -1,4 +1,4 @@
-# Modified by Peize Sun, Rufeng Zhang
+    # Modified by Peize Sun, Rufeng Zhang
 # ------------------------------------------------------------------------
 # Modified from DETR (https://github.com/facebookresearch/detr)
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
@@ -71,8 +71,8 @@ class ConvertCocoPolysToMask(object):
         # guard against no boxes via resizing
         boxes = torch.as_tensor(boxes, dtype=torch.float32).reshape(-1, 4)
         boxes[:, 2:] += boxes[:, :2]
-        boxes[:, 0::2].clamp_(min=0, max=w)
-        boxes[:, 1::2].clamp_(min=0, max=h)
+        #boxes[:, 0::2].clamp_(min=0, max=w)
+        #boxes[:, 1::2].clamp_(min=0, max=h)
 
         classes = [obj["category_id"] for obj in anno]
         classes = torch.tensor(classes, dtype=torch.int64)

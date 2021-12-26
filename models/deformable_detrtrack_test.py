@@ -469,12 +469,14 @@ class PostProcess(nn.Module):
 #         boxes = box_ops.box_cxcywh_to_xyxy(out_bbox)
 #         boxes = torch.gather(boxes, 1, topk_boxes.unsqueeze(-1).repeat(1,1,4))
         
-        scores, labels = prob[..., 1:2].max(-1)
-        labels = labels + 1
+        ### scores, labels = prob[..., 1:2].max(-1)
+        scores, labels = prob.max(-1)
+        ##labels = labels + 1
         boxes = box_ops.box_cxcywh_to_xyxy(out_bbox)
 
-        track_scores, track_labels = track_prob[..., 1:2].max(-1)
-        track_labels = track_labels + 1
+        ### track_scores, track_labels = track_prob[..., 1:2].max(-1)
+        track_scores, track_labels = track_prob.max(-1)
+        ##track_labels = track_labels + 1
         track_boxes = box_ops.box_cxcywh_to_xyxy(track_bbox)
         
         # and from relative [0, 1] to absolute [0, height] coordinates
